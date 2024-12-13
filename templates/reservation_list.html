@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <title>予約一覧</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
 </head>
-
 <body>
     <h1>予約一覧</h1>
     <ul class="breadcrumb">
@@ -14,33 +12,30 @@
         <li><a href="{{ url_for('reservation.list') }}">予約一覧</a></li>
     </ul>
 
+    <a href="{{ url_for('reservation.add') }}">新規予約追加</a>
+    <table>
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>名前</th>
+                <th>フード商品名</th>
+                <th>ドリンク商品名</th>
+                <th>合計金額</th>
 
-</body>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in items %}
+            <tr>
+                <td><a href="{{ url_for('reservation.edit', reservation_id=reservation.id) }}">編集</a></td>
+                <td>{{ reservation.customer.name }}</td>
+                <td>{{ reservation.food.name }}</td>
+                <td>{{ reservation.drink.name }}</td>
+                <td>{{ reservation.food.price + reservation.drink.price }}円<td>
 
-</html>
-
-</ul>
-<a href="{{ url_for('reservation.add') }}">新規予約追加</a>
-<table>
-    <thead>
-        <tr>
-            <th>&nbsp;</th>
-            <th>名前</th>
-            <th>フード商品名</th>
-            <th>ドリンク商品名</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for reservation in items %}
-        <tr>
-            <td><a href="{{ url_for('reservation.edit', reservation_id=reservation.id) }}">編集</a></td>
-            <td>{{ customer.name }}</td>
-            <td>{{ food.name }}</td>
-            <td>{{ drink.name }}</td>
-            
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

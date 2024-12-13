@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <title>データ一覧</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
 </head>
-
 <body>
   <h1>index</h1>
   <ul>
-
     <li><a href="{{ url_for('food.list') }}">フードメニュー</a></li>
     <li><a href="{{ url_for('drink.list') }}">ドリンクメニュー</a></li>
     <li><a href="{{ url_for('customer.list') }}">客リスト</a></li>
     <li><a href="{{ url_for('reservation.list') }}">予約リスト</a></li>
-
   </ul>
 </body>
 

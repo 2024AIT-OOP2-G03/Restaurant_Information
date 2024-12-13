@@ -1,6 +1,5 @@
 from peewee import SqliteDatabase
 from .db import db
-# s
 # from .order import Order
 from .food import Food
 from .drink import Drink
