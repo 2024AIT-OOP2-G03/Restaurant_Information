@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 from models import initialize_database
+from models import Customer
 from routes import blueprints
+from peewee import fn
 
 app = Flask(__name__)
 
@@ -14,7 +16,9 @@ for blueprint in blueprints:
 # ホームページのルート
 @app.route('/')
 def index():
-    return render_template('index.html')
+    total_num_people = int(Customer.select(fn.SUM(Customer.numPeople)).scalar() or 0)
+    return render_template('index.html', total_num_people=total_num_people)
+
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
