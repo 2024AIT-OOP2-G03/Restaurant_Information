@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>データ一覧</title>
@@ -7,6 +8,7 @@
   <!-- 棒グラフ用 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
   <h1>index</h1>
   <ul>
@@ -16,12 +18,15 @@
     <li><a href="{{ url_for('reservation.list') }}">予約リスト</a></li>
   </ul>
 
+  <p>累計客数: {{ total_num_people }}</p>
+  <p>一人当たりの平均使用金額 : {{ average_price_per_person }}</p>
+
   <div>
     <h2>製品別売上</h2>
     <canvas id="barChart" width="400" height="200"></canvas>
   </div>
 
-<!-- 棒グラフ用 -->
+  <!-- 棒グラフ用 -->
   <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
 </body>
 
