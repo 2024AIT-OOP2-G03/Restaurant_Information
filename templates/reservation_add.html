@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>予約追加</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
 </head>
+
 <body>
     <h1>予約を追加</h1>
     <ul class="breadcrumb">
@@ -17,25 +19,26 @@
         <label>顧客：
             <select name="customer_id" required>
                 {% for customer in customers %}
-                    <option value="{{ customer.id }}">{{ customer.name }}</option>
+                <option value="{{ customer.id }}">{{ customer.name }}</option>
                 {% endfor %}
             </select>
         </label><br>
-        <label>フード商品名: 
+        <label>フード商品名:
             <select name="food_id" required>
                 {% for food in foods %}
-                    <option value="{{ food.id }}">{{ food.name }}</option>
+                <option value="{{ food.id }}">{{ food.name }}</option>
                 {% endfor %}
             </select>
         </label><br>
-        <label>ドリンク商品名:  
+        <label>ドリンク商品名:
             <select name="drink_id" required>
                 {% for drink in drinks %}
-                    <option value="{{ drink.id}}">{{ drink.name }}</option>
+                <option value="{{ drink.id }}">{{ drink.name }}</option>
                 {% endfor %}
             </select>
         </label><br>
         <button type="submit">保存</button>
     </form>
 </body>
+
 </html>

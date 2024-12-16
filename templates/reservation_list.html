@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>予約一覧</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
 </head>
+
 <body>
     <h1>予約一覧</h1>
     <ul class="breadcrumb">
@@ -31,11 +33,13 @@
                 <td>{{ reservation.customer.name }}</td>
                 <td>{{ reservation.food.name }}</td>
                 <td>{{ reservation.drink.name }}</td>
-                <td>{{ reservation.food.price + reservation.drink.price }}円<td>
+                <td>{{ reservation.food.price + reservation.drink.price }}円
+                <td>
 
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </body>
+
 </html>
