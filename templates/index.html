@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>データ一覧</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+  <!-- 棒グラフ用 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>index</h1>
@@ -13,6 +15,14 @@
     <li><a href="{{ url_for('customer.list') }}">客リスト</a></li>
     <li><a href="{{ url_for('reservation.list') }}">予約リスト</a></li>
   </ul>
+
+  <div>
+    <h2>製品別売上</h2>
+    <canvas id="barChart" width="400" height="200"></canvas>
+  </div>
+
+<!-- 棒グラフ用 -->
+  <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
 </body>
 
 </html>
