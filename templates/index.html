@@ -20,8 +20,12 @@
     <h2>製品別売上</h2>
     <canvas id="barChart" width="400" height="200"></canvas>
   </div>
+  <!-- PythonデータをJavaScriptに渡す -->
+  <script>
+    const indexData = JSON.parse('{{ indexdata | tojson | safe }}');
+  </script>
 
-<!-- 棒グラフ用 -->
+  <!-- 棒グラフ用 -->
   <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
 </body>
 
