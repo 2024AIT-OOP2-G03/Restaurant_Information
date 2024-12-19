@@ -9,9 +9,25 @@ reservation_bp = Blueprint('reservation', __name__, url_prefix='/reservations')
 
 @reservation_bp.route('/')
 def list():
-    # データ取得
-    reservations = Reservation.select()
-    return render_template('reservation_list.html', title='予約リスト', items=reservations)
+    # 予約データを取得
+    reservations = (
+        Reservation
+        .select(Reservation, Food, Drink)
+        .join(Food, on=(Reservation.food_id == Food.id))
+        .switch(Reservation)
+        .join(Drink, on=(Reservation.drink_id == Drink.id))
+    )
+
+    # 全体の合計金額を計算
+    total_price_sum = sum(reservation.food.price + reservation.drink.price for reservation in reservations)
+
+    return render_template(
+        'reservation_list.html',
+        title='予約リスト',
+        items=reservations,
+        total_price_sum=total_price_sum  # 合計金額をテンプレートに渡す
+    )
+
 
 #予約の追加
 @reservation_bp.route('/add', methods=['GET', 'POST'])
