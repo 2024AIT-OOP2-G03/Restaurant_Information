@@ -21,7 +21,6 @@
                 <th>フード商品名</th>
                 <th>ドリンク商品名</th>
                 <th>合計金額</th>
-
             </tr>
         </thead>
         <tbody>
@@ -31,11 +30,11 @@
                 <td>{{ reservation.customer.name }}</td>
                 <td>{{ reservation.food.name }}</td>
                 <td>{{ reservation.drink.name }}</td>
-                <td>{{ reservation.food.price + reservation.drink.price }}円</tr>
-
+                <td>{{ reservation.food.price + reservation.drink.price }}円<td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <h3>全ての予約の合計金額: {{ total_price_sum }}円</h3>
 </body>
 </html>
