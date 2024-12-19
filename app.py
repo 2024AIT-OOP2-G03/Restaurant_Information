@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from models import initialize_database
+from models import Customer
 from routes import blueprints
 from models import Customer, Reservation
 from peewee import fn
