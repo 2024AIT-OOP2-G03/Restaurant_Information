@@ -4,29 +4,57 @@
   <meta charset="UTF-8">
   <title>データ一覧</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+
+  <style>
+    .frame {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #333333;
+      max-width: 500px; /* 枠の最大幅を指定 */
+    }
+       h2, h3, h4, h5 {
+      font-size: 20px; /* 統一した文字サイズ */
+      /*margin: 0; /* 不要な余白をリセット */
+    }
+  </style>
   <!-- 棒グラフ用 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>index</h1>
+    <h1>飲食店データ</h1>
   <ul>
-    <li><a href="{{ url_for('food.list') }}">フードメニュー</a></li>
-    <li><a href="{{ url_for('drink.list') }}">ドリンクメニュー</a></li>
-    <li><a href="{{ url_for('customer.list') }}">客リスト</a></li>
-    <li><a href="{{ url_for('reservation.list') }}">予約リスト</a></li>
+      <ul style="list-style-position: inside; margin: 0; padding: 0;">
+        <li><a href="{{ url_for('food.list') }}">フードメニュー</a></li>
+        <li><a href="{{ url_for('drink.list') }}">ドリンクメニュー</a></li>
+        <li><a href="{{ url_for('customer.list') }}">客リスト</a></li>
+        <li><a href="{{ url_for('reservation.list') }}">予約リスト</a></li>
+      </ul>
+    
   </ul>
 
-  <div>
-    <h2>製品別売上</h2>
-    <canvas id="barChart" width="400" height="200"></canvas>
+  <div class="frame">
+    <h2 >総売上:{{total_price_sum}}</h2>
+  </div>
+
+  <div class="frame">
+    <h3 >一人当たりの平均使用金額 : {{ average_price_per_person }}</h3>
+  </div>
+
+  <div class="frame">
+    <h4 >累計客数: {{ total_num_people }}</h4>
+  </div>
+
+  
+  <div class="frame">
+    <h5 >製品別売上</h5>
+
+      <canvas id="barChart" width="400" height="200"></canvas>
   </div>
   <!-- PythonデータをJavaScriptに渡す -->
   <script>
-    const indexData = JSON.parse('{{ indexdata | tojson | safe }}');
+      const indexData = JSON.parse('{{ indexdata | tojson | safe }}');
   </script>
 
   <!-- 棒グラフ用 -->
   <script src="{{ url_for('static', filename='bar-chart.js') }}"></script>
 </body>
-
-</html>
