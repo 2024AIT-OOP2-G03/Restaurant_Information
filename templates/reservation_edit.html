@@ -8,30 +8,30 @@
 <body>
     <h1>予約を編集</h1>
     <ul class="breadcrumb">
-        <li><a href="{{ url_for('index') }}">HOME</a></li>
-        <li><a href="{{ url_for('order.list') }}">予約一覧</a></li>
+        <li><a href="{{ url_for('home') }}">HOME</a></li>
+        <li><a href="{{ url_for('reservation.list') }}">予約一覧</a></li>
         <li>予約の編集</li>
     </ul>
 
-    <form action="{{ url_for('order.edit', order_id=order.id) }}" method="post">
+    <form action="{{ url_for('reservation.edit', reservation_id=reservation.id) }}" method="post">
         <label>顧客：
             <select name="customer_id" required>
-                {% for customer in customer %}
-                    <option value="{{ customer.id }}" {% if order.customer.id == customer.id %}selected{% endif %}>{{ customer.name }}</option>
+                {% for customer in customers %}
+                    <option value="{{ customer.id }}" {% if reservation.customer.id == customer.id %}selected{% endif %}>{{ customer.name }}</option>
                 {% endfor %}
             </select>
         </label><br>
         <label>フード商品名: 
-            <select name="food_number" required>
-                {% for food in food %}
-                    <option value="{{ food_number }}" {% if order.food.id == food_number %}selected{% endif %}>{{ food.name }}</option>
+            <select name="food_id" required>
+                {% for food in foods %}
+                    <option value="{{ food.id }}" {% if reservation.food.id == food.id %}selected{% endif %}>{{ food.name }}</option>
                 {% endfor %}
             </select>
         </label><br>
         <label>ドリンク商品名:  
-            <select name="drink_number" required>
-                {% for drink in drink %}
-                    <option value="{{ drink_number}}" {% if order.drink.id == drink_number %}selected{% endif %}>{{ drink.name }}</option>
+            <select name="drink_id" required>
+                {% for drink in drinks %}
+                    <option value="{{ drink.id}}" {% if reservation.drink.id == drink.id %}selected{% endif %}>{{ drink.name }}</option>
                 {% endfor %}
             </select>
         </label><br>

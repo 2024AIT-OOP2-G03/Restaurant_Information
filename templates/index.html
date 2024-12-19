@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <title>データ一覧</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+
   <style>
     .frame {
       padding: 10px;
@@ -17,8 +17,9 @@
       /*margin: 0; /* 不要な余白をリセット */
     }
   </style>
+  <!-- 棒グラフ用 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <h1>飲食店データ</h1>
   <ul>

@@ -7,15 +7,12 @@ drink_bp = Blueprint('drink', __name__, url_prefix='/drinks')
 
 @drink_bp.route('/')
 def list():
-    
     # データ取得
     drinks = Drink.select()
-
     return render_template('drink_list.html', title='ドリンクメニュー', items=drinks)
 
 @drink_bp.route('/add', methods=['GET', 'POST'])
 def add():
-    
     # POSTで送られてきたデータは登録
     if request.method == 'POST':
         name = request.form['name']
